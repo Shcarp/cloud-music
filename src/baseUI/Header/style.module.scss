@@ -1,0 +1,52 @@
+@import "../../style/global.style.scss";
+
+.HeaderContainer {
+  position: fixed;
+  padding: .416667rem .833333rem;
+  padding-top: 0;
+  height: 2.916667rem;
+  width: 100%;
+  z-index: 100;
+  line-height: 3.333333rem;
+  color: black;
+  div {
+    display: flex;
+    .back {
+      margin-right: .416667rem;
+      font-size: 1.666667rem;
+      width: 1.666667rem;
+    }
+    >div>h1 {
+      font-size: $font-size-l;
+      font-weight: 700;
+    }
+  }
+} 
+@keyframes marquee {
+  from{
+    left: 100%;
+  }
+  to {
+    left: -100%;
+  }
+}
+@keyframes marquee { 
+  from { 
+    transform: translateX(100%); 
+  } 
+  to { 
+    transform: translateX(-100%); 
+  } 
+} 
+
+.Marquee {
+  width: 100%;
+  height: 2.916667rem;
+  overflow: hidden;
+  position: relative;
+  white-space: nowrap;
+  .text {
+    position: absolute;
+    animation: marquee 10s linear infinite;
+  }
+}

@@ -1,0 +1,31 @@
+@import "../../style//global.style.scss";
+
+@keyframes loading {
+  0%, 10% {
+    transform: scale(0.0);
+  }
+  50% {
+    transform: scale(1.0);
+  }
+}
+
+.LoadingWrapper {
+  div {
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    opacity: 0.6;
+    border-radius: 50%;
+    background-color: $theme-color;
+    animation: loading 1.4s infinite ease-in;
+  }
+  & :nth-child(2) {
+    animation-delay: -0.7s;
+  }
+}

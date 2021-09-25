@@ -1,0 +1,13 @@
+@import "../../style/global.style.scss";
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000 !important;
+  background: $background-color;
+  transform-origin: right bottom;
+}
+

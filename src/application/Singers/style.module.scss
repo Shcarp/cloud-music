@@ -1,0 +1,53 @@
+@import "../../style/global.style.scss";
+
+.NavContainer {
+  box-sizing: border-box;
+  position: fixed;
+  top: 7.916667rem;
+  width: 100%;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.ListContainer {
+  position: fixed;
+  top: 15.833333rem;
+  left: 0;
+  bottom: 0;
+  overflow: hidden;
+  width: 100%;
+}
+.List {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  overflow: hidden;
+  .title {
+    margin: .833333rem 0 .833333rem .833333rem;
+    color: $font-color-desc;
+    font-size: $font-size-s;
+  }
+  .ListItem {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    margin: 0 5px;
+    padding: 5px 0;
+    align-items: center;
+    border-bottom: 1px solid $border-color;
+    .imgWrapper {
+      margin-right: 1.666667rem;
+      img {
+        border-radius: 3px;
+        width: 4.166667rem;
+        height: 4.166667rem;
+      }
+    }
+    .name {
+      font-size: $font-size-m;
+      color: $font-color-desc;
+      font-weight: 500;
+    }
+  }
+}
+

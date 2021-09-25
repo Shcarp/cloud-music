@@ -1,0 +1,18 @@
+@import "../../style//global.style.scss";
+
+.Content {
+
+  position: fixed;
+  top: 7rem;
+  bottom: 0;
+  width: 100%;
+  background-color: rgba($color: #eeeeee, $alpha: 0.5);
+  
+  .before {
+    position: absolute;
+    top: -200px;
+    height: 300px;
+    width: 100%;
+    background: $theme-color;
+  }
+}

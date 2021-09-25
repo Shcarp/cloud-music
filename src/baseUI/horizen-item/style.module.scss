@@ -1,0 +1,30 @@
+@import "../../style/global.style.scss";
+
+.List {
+  display: inline-flex;
+  align-items: center;
+  height: 2.5rem;
+  white-space: normal;
+  >span:first-of-type {
+    box-sizing: content-box;
+    display: inline-block;
+    flex: 0 0 auto;
+    padding: 5px 0;
+    margin-right: .416667rem;
+    color: grey;
+    font-size: $font-size-m;
+    vertical-align: middle;
+  }
+}
+
+.ListItem {
+  flex: 0 0 auto;
+  font-size: $font-size-m;
+  padding: 5px 8px;
+  border-radius: 10px;
+  &.selected {
+    color: $theme-color;
+    border: 1px solid $theme-color;
+    opacity: 0.8;
+  }
+}

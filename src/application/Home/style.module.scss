@@ -1,0 +1,65 @@
+@import "../../style/global.style.scss";
+
+.homeRoot {
+  .top {
+    height: 2.916667rem;
+    border: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: .416667rem .833333rem;
+    background-color: $theme-color;
+    &> span {
+      line-height: 2.916667rem;
+      color: $home-white;
+      &.menu {
+        color: $home-white;
+        font-size: 1.333333rem;
+      }
+      &.title {
+        .inputClass {
+          padding-left: 1rem;
+          box-sizing: content-box;
+          width: 12.5rem;
+          height: 1.666667rem;
+          border: none;
+          background-color: rgba($color: #f3f1f2, $alpha: 0.5);
+          border-radius: 1.25rem;
+        }
+      }
+      &.search {
+        color: $home-white;
+        font-size: 1.333333rem;
+      }
+    }
+  }
+  .tab {
+    border: 0;
+    height: 3.333333rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: $theme-color;
+    a {
+      flex: 1;
+      padding: .166667rem, 0;
+      font-size: 1rem;
+      color: $home-white;
+      &.selected {
+        span {
+          padding: .25rem 0;
+          font-weight: 400;
+          color: $home-white;
+          border-bottom: .166667rem solid $home-white;
+        }
+      }
+    }
+  }
+  .tabItem {
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+}

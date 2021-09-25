@@ -1,0 +1,65 @@
+@import "../../style/global.style.scss";
+
+.ListWrapper {
+  max-width: 100%;
+  .title {
+    font-weight: 700;
+    padding-left: .5rem;
+    font-size: 1.166667rem;
+    line-height: 3.333333rem;
+  }
+} 
+.List {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.ListItem {
+  position: relative;
+  width: 32%;
+  .imgWrapper {
+    .decorate {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 2.916667rem;
+      border-radius: .833333rem;
+      background: linear-gradient(hsla(0, 0%, 43%, 0.4),hsla(0,0%, 100%,0));
+    }
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    .playCount {
+      padding-right: .25rem;
+      position: absolute;
+      right: .166667rem;
+      top: .166667rem;
+      font-size: $font-size-s;
+      line-height: 1.25rem;
+      color: $font-color-light;
+      .play {
+        vertical-align: top;
+      }
+    }
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: .833333rem;
+    }
+  }
+  .desc {
+    overflow: hidden;
+    margin-top: .166667rem;
+    padding: 0 .166667rem;
+    height: 3.333333rem;
+    text-align: left;
+    font-size: $font-size-s;
+    line-height: 1.4;
+    color: $font-color-desc;
+  }
+}
+
