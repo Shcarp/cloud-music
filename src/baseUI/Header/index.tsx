@@ -9,7 +9,7 @@ export interface HeaderProps {
   [name: string]: any
 }
 
-const Header = React.forwardRef((props: HeaderProps, ref: React.LegacyRef<HTMLDivElement>) => {
+const Header = React.forwardRef<HTMLDivElement, HeaderProps>((props, ref) => {
   const { handleClick, title, isMarquee } = props
   return (
     <div className={s.HeaderContainer} ref={ref}>

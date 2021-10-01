@@ -2,13 +2,12 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import {getRankList} from "./store";
 import s from "./style.module.scss";
-import { filterIdx } from "../../api/utils"
 import Scroll from "../../components/Scroll";
 import Loading from "../../components/Loading";
 import { renderRoutes } from "react-router-config";
 
 const Rank = (props: TSRankData.RankProps) => {
-    const { rankList: List, loading } = props
+    const { rankList: List, loading, songsCount } = props
     const { getRankListDataDispatch } = props
     let rankList = List ? List.toJS() : []
     useEffect(()=>{
@@ -29,9 +28,9 @@ const Rank = (props: TSRankData.RankProps) => {
         return (
             <ul className={s.List} style={{display: global ? "flex": ""}}>
                 {
-                    list.map((item: TSRankData.RankData) => {
+                    list.map((item: TSRankData.RankData, index: number) => {
                         return (
-                            <li className={s.ListItem} style={{display: item.tracks.length ? "flex" : ""}} onClick={()=> enterDetail(item.id)}>
+                            <li className={s.ListItem} key={index} style={{display: item.tracks.length ? "flex" : ""}} onClick={()=> enterDetail(item.id)}>
                                 <div style={{width: item.tracks.length ? "27vw": "32vw", height: item.tracks.length ? "27vw" : "32vw", borderRadius: "3px", position: "relative"}}>
                                     <img src={item.coverImgUrl} alt=""></img>
                                     <div className={s.decorate}></div>
@@ -60,7 +59,7 @@ const Rank = (props: TSRankData.RankProps) => {
     }
     let displayStyle = loading ? {"display":"none"}:  {"display": ""}; 
     return (
-        <div className={s.Container}>
+        <div className={s.Container} style={{bottom: songsCount > 0 ? "70px": "0"}}>
             <Scroll direction="vertical">
                 <div>
                     <h1 className={ s.offical } style={displayStyle}> 官方榜 </h1>
@@ -77,7 +76,8 @@ const Rank = (props: TSRankData.RankProps) => {
 
 const mapStateToProps = (state: any) => ({
     rankList: state.getIn(['rank', 'rankList']),
-    loading: state.getIn(['rank', 'loading'])
+    loading: state.getIn(['rank', 'loading']),
+    songsCount: state.getIn(['player', 'playList']).size
 })
 
 const mapDispatchToProps = (dispatch: any) => {

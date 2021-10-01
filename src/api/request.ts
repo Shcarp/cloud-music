@@ -24,3 +24,7 @@ export const getRankListRequest = (): Promise<TSRankData.RankList> => {
 export const getAlbumDetailRequest = (id: number): Promise<TSPlayListData.PlayList> => {
   return axiosInstance.get (`/playlist/detail?id=${id}`);
 }
+
+export const getSingerInfoRequest = (id: number): Promise<TSSingerData.SingerList> => {
+  return axiosInstance.get(`/artists?id=${id}`)
+}

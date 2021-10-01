@@ -1,0 +1,95 @@
+@import "../../../style/global.style.scss";
+
+.PlayListWrapper {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1000;
+  background-color: $background-color-shadow;
+  .list_wrapper {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    opacity: 1;
+    border-radius: .833333rem .833333rem 0 0;
+    background-color: $highlight-background-color;
+    transform: translate3d(0,0,0);
+    .list_close {
+      text-align: center;
+      line-height: 4.166667rem;
+      background: $background-color;
+      font-size: $font-size-l;
+      color: $font-color-desc;
+    }
+  }
+}
+
+.ScrollWrapper {
+  height: 33.333333rem;
+  overflow: hidden;
+}
+
+.ListHeader {
+  position: relative;
+  padding: 1.666667rem 2.5rem .833333rem 1.666667rem;
+  .title {
+    display: flex;
+    align-items: center;
+    >div {
+      flex: 1;
+      .text {
+        flex: 1;
+        font-size: $font-size-m;
+        color: $font-color-desc;
+      }
+    }
+    .iconfont {
+      margin-right: .833333rem;
+      font-size: $font-size-ll;
+      color: $theme-color;
+    }
+    .clear {
+      @include extendClick;
+      font-size: $font-size-l;
+    }
+  }
+}
+
+.ListContent {
+  .item {
+    display: flex;
+    align-items: center;
+    height: 3.333333rem;
+    padding: 0 2.5rem 0 1.666667rem;
+    overflow: hidden;
+    .current {
+      flex: 0 0 1.666667rem;
+      width: 1.666667rem;
+      font-size: $font-size-s;
+      color: $theme-color;
+    }
+    .text {
+      flex: 1;
+      @include noWrap;
+      font-size: $font-size-m;
+      color: $font-color-desc-v2;
+      .icon_favorite {
+        color: $theme-color;
+      }
+    }
+    .like {
+      @include extendClick;
+      margin-right: 1.25rem;
+      font-size: $font-size-m;
+      color: $theme-color;
+    }
+    .delete{
+      @include extendClick;
+      font-size: $font-size-s;
+      color: $theme-color;
+    }
+  }
+}

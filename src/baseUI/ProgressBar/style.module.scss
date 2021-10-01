@@ -1,0 +1,34 @@
+@import "../../style/global.style.scss";
+
+.ProgressBarWrapper  {
+  height: 2.5rem;
+  .bar_inner {
+    position: relative;
+    top: 1.083333rem;
+    height: .333333rem;
+    background: rgba(0, 0, 0, .3);
+    .progress {
+      position: absolute;
+      height: 100%;
+      background: $theme-color;
+    }
+    .progress_btn_wrapper {
+      position: absolute;
+      left: -1.25rem;
+      top: -1.083333rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      .progress_btn {
+        position: relative;
+        top: .583333rem;
+        left: .583333rem;
+        box-sizing: border-box;
+        width: 1.333333rem;
+        height: 1.333333rem;
+        border: .25rem solid $border-color;
+        border-radius: 50%;
+        background: $theme-color;
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ import { forceCheck } from 'react-lazyload';
 import { renderRoutes } from 'react-router-config'
 
 const Recommend = (props: TSRecommendData.RecommendProps) => {
+  const { songsCount } = props
   const { bannerList, recommendList, enterLoading } = props
   const { getBannerDataDispatch, getRecommendListDataDispatch } = props;
   useEffect(() => {
@@ -20,7 +21,7 @@ const Recommend = (props: TSRecommendData.RecommendProps) => {
   const bannerListJS = bannerList ? bannerList.toJS () as TSRecommendData.BannerArrDataType : [];
   const recommendListJS = recommendList ? recommendList.toJS () as TSRecommendData.PersonalizedArrDataType :[];
   return (
-    <div className={ style.Content }>
+    <div className={ style.Content } style={{bottom: songsCount > 0 ? "60px": "0"}}>
       <Scroll direction="vertical" onScroll={ ()=>forceCheck() }>
         <div>
           <Slider bannerList={bannerListJS} >
@@ -39,7 +40,8 @@ const Recommend = (props: TSRecommendData.RecommendProps) => {
 const mapStateToProps = (state: TSRecommendData.ObjType) => ({
   bannerList: state.getIn(['recommend', 'bannerList']) as TSRecommendData.IBannerArrDataType,
   recommendList: state.getIn (['recommend', 'recommendList']) as TSRecommendData.IPersonalizedDataType,
-  enterLoading: state.getIn(['recommend', 'enterLoading'])
+  enterLoading: state.getIn(['recommend', 'enterLoading']),
+  songsCount: state.getIn (['player', 'playList']).size
 })
 
 const mapDispatchToProps = (dispatch: any)=> {

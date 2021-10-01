@@ -4,6 +4,7 @@ import { RouteConfig } from "react-router-config"
 import style from "./style.module.scss"
 import classes from "classnames"
 import { NavLink } from "react-router-dom";
+import Player from "../Player";
 
 export interface HomeProps {
   route?: RouteConfig
@@ -37,6 +38,7 @@ const Home =  (props: HomeProps) => {
         </NavLink>
       </div>
       { renderRoutes( route?.routes ) }
+      <Player></Player>
     </div>
   )
 }

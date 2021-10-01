@@ -1,0 +1,18 @@
+@import "../../style/global.style.scss";
+
+.Container {
+  .icon_wrapper {
+    position: fixed;
+    z-index: 1000;
+    margin-top: -0.833333rem;
+    margin-left: -0.833333rem;
+    color: $theme-color;
+    font-size: 1.166667rem;
+    display: none;
+    transition: all 1s cubic-bezier(.62, -0.1, .86, .57);
+    transform: translate3d(0, 0, 0);
+    >div {
+      transition: all 1s;
+    }
+  }
+}

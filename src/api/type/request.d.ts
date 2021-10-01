@@ -131,3 +131,33 @@ declare namespace TSPlayListData {
     [name: string]: any
   }
 }
+
+declare namespace TSSingerData {
+  interface SingerData {
+    picUrl: string
+    name: string
+    briefDesc: string
+    [name: string]: any
+  }
+  interface arD {
+    name: string
+    [name: string]: any
+  }
+  interface alD {
+    name: string
+    [name: string]: any
+  }
+  interface hotSongsData {
+    name: string,
+    ar: Array<arD>,
+    al: alD
+    [name: string]: any
+  }
+  interface SingerList {
+    artist: SingerData
+    code: number
+    more: boolean
+    hotSongs: Array<hotSongsData>
+    [name: string]: any
+  }
+}

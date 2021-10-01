@@ -18,7 +18,7 @@ declare namespace  TSRecommendData {
     [name: string]: any
   }
   type DispachFunc = (arg0: RecommendData.DisPatchFunc) => void
-  type ObjType = Map<keyof RecommendData.TSDateObj, TSBannersProps.BannerData[] | TSPersonalizedData.PersonalizedData[]>
+  type ObjType = Map<keyof TSDateObj, TSBannersProps.BannerData[] | TSPersonalizedData.PersonalizedData[]>
   type ArrType =  List<TSBannersProps.BannerData | TSPersonalizedData.PersonalizedList>
   type BannerArrDataType = Array<TSBannersProps.BannerData>
   type PersonalizedArrDataType = Array<TSPersonalizedData.PersonalizedData>

@@ -5,7 +5,7 @@ import MouseWheel from '@better-scroll/mouse-wheel'
 import ScrollBar from '@better-scroll/scroll-bar'
 import PullDown from '@better-scroll/pull-down'
 import Pullup from '@better-scroll/pull-up'
-import { useEffect, useRef, useState } from 'react'
+import React, { forwardRef, useEffect, useRef, useState, useImperativeHandle } from 'react'
 import Loading from '../Loading'
 import s from "./style.module.scss"
 import LoadingV2 from "../Loading-v2"
@@ -23,9 +23,10 @@ export interface ScrollProps {
   pullUpLoading ?: boolean
   pullDownLoading ?: boolean;
   bounceTop?: boolean
+  [name: string]: any
 }
 
-const Scroll: React.FC<ScrollProps> = ({   
+const Scroll: React.FC<ScrollProps> = forwardRef<HTMLDivElement, ScrollProps> (({   
   direction,
   onPullup,
   onPulldown,
@@ -42,7 +43,7 @@ const Scroll: React.FC<ScrollProps> = ({
   pullDownLoading=false,
   pullUpLoading=false,
   bounceTop=true,
-  refresh= true}) => {
+  refresh= true}, ref) => {
   BScroll.use(ObserveDOM)
   BScroll.use(MouseWheel)
   BScroll.use(ScrollBar)
@@ -137,6 +138,21 @@ const Scroll: React.FC<ScrollProps> = ({
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  useImperativeHandle<HTMLDivElement, any>(ref, ()=>({
+    refresh(){
+      if(scrollObj) {
+        scrollObj.refresh();
+        scrollObj.scrollTo(0, 0);
+      }
+    },
+    getBScroll() {
+      if(scrollObj) {
+        return scrollObj;
+      }
+    },
+  }))
+
   const PullUpdisplayStyle = pullUpLoading ? { display: ""} : {display: "none"}
   const PullDowndisplayStyle = pullDownLoading ? { display: ""} : {display: "none"}
 
@@ -153,6 +169,6 @@ const Scroll: React.FC<ScrollProps> = ({
         </div>
     </div>
   )
-}
+})
 
 export default Scroll

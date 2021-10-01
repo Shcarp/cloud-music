@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = (props) => {
           pagination={{clickable: true}}
           autoplay={{delay: 2500, disableOnInteraction: false}}
           onSlideChange={()=>{console.log("side change")}}
-          onSwiper={(swiper) => console.log(swiper)}
+          // onSwiper={(swiper) => console.log(swiper)}
 
         >
           {

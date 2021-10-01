@@ -6,10 +6,12 @@ import './style.css'
 import Scroll from "../Scroll";
 // import classes from "classnames"
 import ATemplate from "./AlumTemplate"
-import AList from "./AlbumList"
+// import AList from "./AlbumList"
 import { connect } from 'react-redux';
 import { changeEnterLoading, getAlbumList } from "./store/actionCreators";
 import Loading from "../Loading";
+import SongList from '../../application/SongList'
+import MusicNote from "../../baseUI/musicNote"
 
 interface AlbumProps {
   currentAlbum: Album.IMReducerArrDate
@@ -24,10 +26,14 @@ const Album = (props: AlbumProps) => {
   const [title, setTitle] = useState ("歌单");
   const [isMarquee, setIsMarquee] = useState (false);// 是否跑马灯
   const headerEl = useRef<HTMLDivElement>(null)
-
+  const musicNoteRef = useRef<any>()
   const id = props.match.params.id;
-  const { currentAlbum, enterLoading, getAlbumDataDispatch } = props
+  const { currentAlbum, enterLoading, getAlbumDataDispatch, songsCount } = props
   const currentAlbumJS =  currentAlbum.toJS() as TSPlayListData.PlayData
+
+  const musicAnimation =(x: number, y: number) => {
+    musicNoteRef.current.startAnimation({x, y})
+  }
 
   useEffect (()=> {
     getAlbumDataDispatch(id)
@@ -50,6 +56,7 @@ const Album = (props: AlbumProps) => {
       setTitle ("歌单");
       setIsMarquee (false);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []) 
 
   const handBack = useCallback(() => {
@@ -65,15 +72,17 @@ const Album = (props: AlbumProps) => {
       unmountOnExit
       onExited={props.history.goBack}
     >
-      <div className={s.container}>
+      <div className={s.container} style={{bottom: songsCount > 0 ? "80px": "0"}}>
         <Header ref={headerEl} title={title} isMarquee={isMarquee} handleClick={handBack} ></Header>
         <Scroll direction="vertical" bounceTop={false} onScroll={handleScroll}>
           <div>
             <ATemplate currentAlbum={currentAlbumJS}></ATemplate>
-            <AList currentAlbum={currentAlbumJS}></AList>
+            <SongList songs={currentAlbumJS.tracks} collectCount={currentAlbum.subscribedCount} musicAnimation={musicAnimation}>
+            </SongList>
           </div>
         </Scroll>
         { enterLoading ? <Loading></Loading> : null}
+        <MusicNote ref={musicNoteRef}></MusicNote>
      </div>
     </CSSTransition>
   )
@@ -81,6 +90,7 @@ const Album = (props: AlbumProps) => {
 const mapStateToProps = (state: { getIn: (arg0: string[]) => any; }) => ({
   currentAlbum: state.getIn (['album', 'currentAlbum']),
   enterLoading: state.getIn (['album', 'enterLoading']),
+  songsCount: state.getIn(['player', 'playList']).size
 })
 
 const mapDispatchToProps = (dispatch: (arg0: any) => void) => {

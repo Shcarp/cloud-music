@@ -21,7 +21,7 @@ import { renderRoutes } from "react-router-config";
 
 const Singers = (props: TSSingersData.SingerProps) => {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const {singerList, enterLoading, pullUpLoading, pullDownLoading, pageCount} = props
+  const {singerList, enterLoading, pullUpLoading, pullDownLoading, pageCount, songsCount} = props
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const { getHotSingerDispatch, updateDispatch, pullDownRefreshDispatch, pullUpRefreshDispatch } = props
   const [category, setCategory] = useState("")
@@ -97,7 +97,7 @@ const Singers = (props: TSSingersData.SingerProps) => {
     handleClick={handleUpdateAlpha}/>
         
       </div>
-      <div className={s.ListContainer}>
+      <div className={s.ListContainer} style={{bottom: songsCount >0 ? "60px": "0"}}>
         <Scroll 
           direction="vertical" 
           onScroll={()=> forceCheck()}
@@ -119,7 +119,8 @@ const mapStateToProps = (state: any) => ({
   enterLoading: state.getIn(['singers', 'enterLoading']),
   pullUpLoading: state.getIn(['singers', 'pullUpLoading']),
   pullDownLoading: state.getIn(['singers', 'pullDownLoading']),
-  pageCount: state.getIn(['singers', 'pageCount'])
+  pageCount: state.getIn(['singers', 'pageCount']),
+  songsCount: state.getIn (['player', 'playList']).size
 })
 
 const mapDispatchToProps  = (dispatch: any) => {
