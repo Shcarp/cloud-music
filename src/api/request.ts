@@ -33,3 +33,16 @@ export const getSingerInfoRequest = (id: number): Promise<TSSingerData.SingerLis
 export const getLyricRequest = (id: number): Promise<TSLrcProps.LrcList> => {
   return axiosInstance.get(`/lyric?id=${id}`)
 }
+// 获取热词
+export const getHotKeyWordsRequest = (): Promise<TSHot.HotRssp> => {
+  return axiosInstance.get('/search/hot')
+}
+export const getSuggestListRequest = (query: string): Promise<TSSuggest.SuggestResp> => {
+  return axiosInstance.get(`/search/suggest?keywords=${query}`)
+}
+export const getResultSongsListRequest  = (query: string): Promise<TSSong.SongResp> => {
+  return axiosInstance.get(`/search?keywords=${query}`)
+}
+export const getSongDetailRequest = (id: number): Promise<any> => {
+  return axiosInstance.get(`/song/detail?ids=${id}`);
+};

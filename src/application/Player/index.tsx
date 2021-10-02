@@ -13,7 +13,7 @@ import {
 import MiniPlayer from './miniPlayer'
 import NormalPlayer from "./normalPlayer"
 import { getSongUrl, isEmptyObject, findIndex, shuffle } from "../../api/utils"
-import Lyric, { LinesProps, HandleProps } from "../../api/utils/Lyric";
+import Lyric, { HandleProps } from "../../api/utils/Lyric";
 import Toast from "../../baseUI/Toast";
 import { playMode } from "../../api/config";
 import PlayList from "./PlayList";

@@ -1,0 +1,73 @@
+@import "../../style/global.style.scss";
+
+.cantainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    overflow: hidden;
+    background: #f2f3f4;
+    transform-origin: right bottom;
+}
+
+.ShortcutWrapper {
+    position:  absolute;
+    top: 2.5rem;
+    bottom: 0;
+    width: 100%;
+}
+.HotKey {
+    margin: 0 1.25rem 1.25rem 1.25rem;
+    .title {
+        padding-top: 2.1875rem;
+        margin-bottom: 1.25rem;
+        font-size: $font-size-m;
+        color: $font-color-desc-v2;
+    }
+    .item {
+        display: inline-block;
+        padding: .3125rem .625rem;
+        margin: 0 1.25rem .625rem 0;
+        border-radius: .375rem;
+        background: $highlight-background-color;
+        font-size: $font-size-m;
+        color: $font-color-desc;
+    }
+}
+
+.List {
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    overflow: hidden;
+    .title {
+        margin: .625rem 0 .625rem .625rem;
+        color: $font-color-desc;
+        font-size: $font-size-s;
+    }
+}
+.ListItem {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    margin: 0 .3125rem;
+    padding: .3125rem 0;
+    align-items: center;
+    border-bottom: .0625rem solid $border-color;
+    .img_wrapper{
+        margin-right: 1.25rem;
+        img {
+            border-radius: .1875rem;
+            width: 1.25rem;
+            height: 3.125rem;
+        }
+    }
+    .name {
+        font-size: $font-size-m;
+        color: $font-color-desc;
+        font-weight: 500;
+    }
+}

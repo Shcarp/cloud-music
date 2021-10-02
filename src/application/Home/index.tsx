@@ -8,6 +8,7 @@ import Player from "../Player";
 
 export interface HomeProps {
   route?: RouteConfig
+  [name: string]: any
 }
 const Home =  (props: HomeProps) => {
   const { route } = props
@@ -16,7 +17,7 @@ const Home =  (props: HomeProps) => {
       <div className={style.top }>
         <span className={classes("iconfont", style.menu, "icon-mulu")}></span>
         <span className={style.title}>
-          <input className={style.inputClass}></input>
+          <input className={style.inputClass} onFocus={()=>props.history.push('/search')}></input>
         </span>
         <span className={classes("iconfont", style.search, "icon-sousuo")}></span>
       </div>

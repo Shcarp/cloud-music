@@ -7,6 +7,7 @@ import Recommend from "../application/Recommend";
 import Singers from "../application/Singers";
 import Album from "../components/Album"
 import Singer from "../components/Singer"
+import Search from "../application/Search";
 
 export default [
   {
@@ -51,6 +52,18 @@ export default [
           }
         ]
       },
+      {
+        path: "/album/:id",
+        exact: true,
+        key: "album",
+        component: Album
+      },
+      {
+        path: "/search",
+        exact: true,
+        kry: "search",
+        component: Search
+      }
     ]
   }
 

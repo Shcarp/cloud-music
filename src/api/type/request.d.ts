@@ -177,3 +177,96 @@ declare namespace TSLrcProps {
     sgc: boolean
   }
 }
+
+declare namespace TSHot {
+  interface DataArr {
+    first: string
+    iconType: number
+    second: number
+    third: unknown
+  }
+  interface HotData {
+    hots: Array<DataArr>
+  }
+  interface HotRssp {
+    code: number
+    result: HotData
+  }
+}
+
+declare namespace TSSuggest {
+  interface BaseData {
+    id: number
+    name: string
+  }
+  interface Artist extends BaseData {
+    albumSize: number
+    alia: Array<string>
+    alias: Array<string>
+    img1v1: number
+    img1v1Url: string
+    picId: number
+    picUrl: string
+    trans: any
+  }
+  interface AlbumsData extends BaseData {
+    alia: Array<string>
+    artist: Artist
+    copyrightId: number
+    mark: number
+    picId: number
+    publishTime: number
+    size: number
+    status: number
+  }
+  interface PlayListData extends BaseData {
+    bookCount: number
+    coverImgUrl: string
+    creator: any
+    description: string
+    highQuality: boolean
+    officialTags: any
+    playCount: number
+    specialType: number
+    subscribed: false
+    trackCount: number
+    userId: number
+  }
+  interface SongeData extends BaseData {
+    album: AlbumsData
+    alias: Array<any>
+    artists: Array<Artist>
+    copyrightId: number
+    duration: number
+    fee: number
+    ftype: number
+    mark: number
+    mvid: number
+    rUrl: any
+    rtype: number
+    status: number
+    transNames: Array<string>
+  }
+  interface RespRes {
+    albums: Array<AlbumsData>
+    artists: Aarray<Artist>
+    order: Array<string>
+    playlists: Array<PlayListData>
+    songs: Array<SongeData>
+  }
+  interface SuggestResp {
+    code: number
+    result: RespRes
+  }
+}
+declare namespace TSSong {
+  interface SongRespData {
+    hasMore: boolean
+    songCount: number
+    songs: Array<TSSuggest.SongeData>
+  }
+  interface SongResp {
+    code: number
+    result: SongRespData
+  }
+}

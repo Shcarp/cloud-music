@@ -13,7 +13,7 @@ export const getCount = (count: number) => {
 }
 
 
-export function debounce (func: Function, delay: number) {
+export function debounce<T extends Function> (func: T, delay: number) {
   let last: number
   let timer: any
   return function (...args: any[]) {
