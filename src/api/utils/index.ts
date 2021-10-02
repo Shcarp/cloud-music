@@ -1,4 +1,5 @@
 import { RankTypes } from "../config";
+import Lyric from "./Lyric";
 
 export const getCount = (count: number) => {
   if (count < 0) return;
@@ -111,3 +112,6 @@ export let vendor = (() => {
   return false;
 })();
 
+
+
+export const LyricPlug = Lyric

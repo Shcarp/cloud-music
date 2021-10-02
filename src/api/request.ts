@@ -28,3 +28,8 @@ export const getAlbumDetailRequest = (id: number): Promise<TSPlayListData.PlayLi
 export const getSingerInfoRequest = (id: number): Promise<TSSingerData.SingerList> => {
   return axiosInstance.get(`/artists?id=${id}`)
 }
+
+// 获取歌词
+export const getLyricRequest = (id: number): Promise<TSLrcProps.LrcList> => {
+  return axiosInstance.get(`/lyric?id=${id}`)
+}

@@ -161,3 +161,19 @@ declare namespace TSSingerData {
     [name: string]: any
   }
 }
+
+declare namespace TSLrcProps {
+  interface LrcData {
+    lyric: string
+    version: number
+  }
+  interface LrcList {
+    code: number
+    klyric: LrcData
+    lrc: LrcData
+    tlyric: LrcData
+    qfy: boolean
+    sfy: boolean
+    sgc: boolean
+  }
+}

@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import { getName, formatPlayTime } from "../../../api/utils";
 import s from "./style.module.scss"
 import { CSSTransition } from "react-transition-group";
@@ -7,13 +7,44 @@ import { CSSTransition } from "react-transition-group";
 import animations from "create-keyframe-animation"
 import ProgressBar from "../../../baseUI/ProgressBar";
 import { playMode } from "../../../api/config"
+import Lyric from "../../../api/utils/Lyric";
+import LyricContainer from "../../../components/LyricContainer"
 
-const NormalPlayer: React.FC<TSPlayProps.MiniPlayerPropsList> = (props) => {
+interface NormalPropsCurr {
+  currentLyric?: Lyric
+  currentPlayingLyric?: string
+  currentLineNumL?: number
+}
+type NormalProps = TSPlayProps.MiniPlayerPropsList & NormalPropsCurr
+
+const NormalPlayer: React.FC<NormalProps> = (props) => {
   const div:HTMLDivElement = document.createElement('div');
   const { song, fullScreen, playing, percent, duration, currentTime, mode} = props
   const { toggleFullScreen, clickPlaying, onProgressChange, handleNext, handlePrev, changeMode, togglePlayList  } = props
   const normalPlayerRef = useRef<HTMLDivElement>(div)
   const cdWrapperRef = useRef<HTMLDivElement>(div);
+  const currentState = useRef("");
+  const lyricScrollRef = useRef<any>();
+  const lyricLineRefs = useRef<Array<React.RefObject<HTMLParagraphElement>>>([]);
+
+  const {
+    currentLineNum,
+    currentPlayingLyric,
+    currentLyric
+  } = props
+
+  useEffect(()=>{
+    if(!lyricScrollRef.current) return
+    let bScroll = lyricScrollRef.current.ScrollRef.getBScroll()
+    if (currentLineNum > 5) {
+      let lineEl = lyricLineRefs.current[currentLineNum -5].current
+      if(lineEl) {
+        bScroll.scrollToElement(lineEl, 1000)
+      }
+    }else {
+      bScroll.scrollTo(0, 0, 1000)
+    }
+  }, [currentLineNum])
 
   const _getPosAndScale = () => {
     const targetWidth = 40
@@ -79,6 +110,7 @@ const NormalPlayer: React.FC<TSPlayProps.MiniPlayerPropsList> = (props) => {
     cdWrapperDom.style.transition = ""
     cdWrapperDom.style.transform = ""
     normalPlayerRef.current.style.display = "none"
+    currentState.current=""
   }
 
   const getPlayMode = () => {
@@ -91,6 +123,13 @@ const NormalPlayer: React.FC<TSPlayProps.MiniPlayerPropsList> = (props) => {
       content = "icon-xunhuan";
     }
     return content;
+  }
+  const toggleCurrentState = () => {
+    if (currentState.current !== "lyric") {
+      currentState.current = "lyric"
+    }else {
+      currentState.current = ""
+    }
   }
 
   return (
@@ -121,12 +160,34 @@ const NormalPlayer: React.FC<TSPlayProps.MiniPlayerPropsList> = (props) => {
           <h1 className={s.title}>{ song.name }</h1>
           <h1 className={s.subtitle}>{getName(song.ar)}</h1>
         </div>
-        <div className={s.Middle} ref={cdWrapperRef}>
-          <div className={s.CDWrapper}>
-            <div className={s.cd}>
-              <img className={classNames(s.image, s.play, playing ? "": s.pause)} src={song.al.picUrl+"?param=400*400"} alt="" />
+        <div className={s.Middle} ref={cdWrapperRef} onClick={toggleCurrentState}>
+          <CSSTransition
+            in={currentState.current !== "lyric"}
+            timeout={400}
+            classNames={s.fade}  
+          >
+            <div className={s.CDWrapper} style={{visibility: currentState.current !== "lyric" ? "visible": "hidden"}}>
+              <div className={s.cd}>
+                <img className={classNames(s.image, s.play, playing ? "": s.pause)} src={song.al.picUrl+"?param=400*400"} alt="" />
+              </div>
+              <p className={s.playing_lyric}>{currentPlayingLyric}</p>
             </div>
-          </div>
+          </CSSTransition>
+          <CSSTransition
+            in={currentState.current === "lyric"}
+            timeout={400}
+            classNames={s.fade}
+          >
+            <div className={s.lyric_container}>
+              <LyricContainer
+                ref={lyricScrollRef}
+                lyricLineRefs={lyricLineRefs}
+                currentLyric={currentLyric}
+                currentState={currentState.current}
+                currentLineNum={currentLineNum}
+              ></LyricContainer>
+            </div>
+          </CSSTransition>
         </div>
         <div className={s.Bottom}>
           <div className={s.ProgressWrapper}>
