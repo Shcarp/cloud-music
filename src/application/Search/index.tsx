@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useRef  } from "react";
 import s from "./style.module.scss"
 import "./style.css"
 import { CSSTransition } from "react-transition-group";
@@ -10,6 +10,9 @@ import { List } from "immutable";
 import Scroll from "../../components/Scroll";
 import Loading from "../../components/Loading";
 import LazyLoad, {forceCheck} from "react-lazyload";
+import { getName } from "../../api/utils";
+import MusicalNote from "../../baseUI/musicNote"
+
 
 export interface SearchProps {
   hotList: List<TSHot.DataArr>
@@ -43,6 +46,8 @@ const Search: React.FC<SearchProps> = (props) => {
   } = props
   const [ show, setShow ] = useState(false)
   const [ query, setQuery ] = useState("") 
+  const div = document.createElement("div")
+  const musicNoteRef = useRef<any>(div)
 
   useEffect(()=>{
     setShow(true)
@@ -59,6 +64,11 @@ const Search: React.FC<SearchProps> = (props) => {
     if (!q) return
     changeEnterLoadingDispatch(true)
     getSuggestListDispatch(q)
+  }
+
+  const selectItem = (e:  React.MouseEvent<HTMLLIElement, MouseEvent>, id: number) => {
+    getSongDetailDispatch(id)
+    musicNoteRef.current.startAnimation({x:e.nativeEvent.clientX, y:e.nativeEvent.clientY})
   }
   const renderHotKey = () => {
     let list = hotList ? hotList : []
@@ -85,13 +95,13 @@ const Search: React.FC<SearchProps> = (props) => {
         {
           singers.map((item:TSSuggest.Artist, index: number) => {
             return (
-              <div className={s.ListItem} key={item.id+""+index}>
+              <div className={s.ListItem} key={item.id+""+index} onClick={()=>props.history.push(`/singers/${item.id}`)}>
                 <div className={s.img_wrapper}>
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require ('./04.png')} alt="singer"/>}>
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require ('./04.jpg')} alt="singer"/>}>
                     <img src={item.picUrl} width="100%" height="100%" alt="music"/>
                   </LazyLoad>
                 </div>
-                <span className={s.name}>歌手：</span>
+                <span className={s.name}>歌手：{item.name}</span>
               </div>
             )
           })
@@ -108,13 +118,13 @@ const Search: React.FC<SearchProps> = (props) => {
         {
           albums.map((item: TSSuggest.PlayListData , index: number) => {
             return (
-              <div className={s.ListItem} key={item.id+""+index} onClick={()=>props.histroy.push(`/album/${item.id}`)}>
+              <div className={s.ListItem} key={item.id+""+index} onClick={()=>props.history.push(`/album/${item.id}`)}>
                 <div className={s.img_wrapper}>
-                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./04.png')} alt="music" />}>
+                  <LazyLoad placeholder={<img width="100%" height="100%" src={require('./04.jpg')} alt="music" />}>
                     <img src={item.coverImgUrl} width="100%" alt="music" />
                   </LazyLoad>
                 </div>
-                <span className={s.name}></span>
+                <span className={s.name}>歌单：{item.name}</span>
               </div>
             )
           })
@@ -123,7 +133,24 @@ const Search: React.FC<SearchProps> = (props) => {
     )
   }
   const renderSongs = () => {
-
+    return (
+      <ul className={s.SongItem} style={{padding: "1.25rem"}}>
+        {
+          songsList.map((item: TSSuggest.SongeData) => {
+            return (
+              <li key={item.id} onClick={(e)=>selectItem(e, item.id)}>
+                <div className={s.info}>
+                  <span>{item.name}</span>
+                  <span>
+                    { getName(item.artists) } - { item.album.name }
+                  </span>
+                </div>
+              </li>
+            )
+          })
+        }
+      </ul>
+    )
   }
 
   return (
@@ -135,7 +162,7 @@ const Search: React.FC<SearchProps> = (props) => {
       unmountOnExit
       onExited={()=>props.history.goBack()}
     >
-      <div className={s.cantainer} >
+      <div className={s.cantainer} style={{bottom:songsCount > 0 ? "3.75rem": "0"}}>
         <div className={s.search_box_wrapper}>
             <SearchBox handleQuery={handleQuery} back={searchBack} newQuery={query}></SearchBox>
         </div>
@@ -159,6 +186,7 @@ const Search: React.FC<SearchProps> = (props) => {
           </Scroll>
         </div>
         { enterLoading ? <Loading></Loading>: null }
+        <MusicalNote ref={musicNoteRef}></MusicalNote>
       </div>
     </CSSTransition>
   )

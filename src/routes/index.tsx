@@ -59,6 +59,12 @@ export default [
         component: Album
       },
       {
+        path: "/singers/:id",
+        exact: true,
+        key: "singers",
+        component: Singer
+      },
+      {
         path: "/search",
         exact: true,
         kry: "search",

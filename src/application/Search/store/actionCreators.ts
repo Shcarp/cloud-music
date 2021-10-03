@@ -18,7 +18,7 @@ const changeResultSongs = (data: Array<TSSuggest.SongeData>) => ({
 })
 
 export const changeEnterLoading  = (data: boolean) => ({
-    typE: SET_ENTER_LOADING,
+    type: SET_ENTER_LOADING,
     data
 })
 

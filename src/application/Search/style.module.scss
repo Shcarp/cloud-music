@@ -61,7 +61,7 @@
         margin-right: 1.25rem;
         img {
             border-radius: .1875rem;
-            width: 1.25rem;
+            width: 3.125rem;
             height: 3.125rem;
         }
     }
@@ -69,5 +69,36 @@
         font-size: $font-size-m;
         color: $font-color-desc;
         font-weight: 500;
+    }
+}
+
+.SongItem {
+    >li {
+        display: flex;
+        height: 3.75rem;
+        align-items: center;
+        .index {
+            width: 3.75rem;
+            height: 3.75rem;
+            line-height: 3.75rem;
+            text-align: center;
+        }
+        .info {
+            box-sizing: border-box;
+            flex: 1;
+            display: flex;
+            height: 100%;
+            padding: .3125rem 0;
+            flex-direction: column;
+            justify-content: space-around;
+            border-bottom: .0625rem solid $border-color;
+            >span:first-child {
+                color: $font-color-desc;
+            }
+            >span:last-child {
+                font-size: $font-size-s;
+                color: #bba8a8;
+            }
+        }
     }
 }
