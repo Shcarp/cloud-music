@@ -24,6 +24,7 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
 
   const progressBtnWidth = 8;  
 
+  // 根据 歌曲进度调整
   useEffect(()=>{
     if (percent >= 0 && percent <= 1 && !touch.initiated) {
       const barWidth = progressBar.current.clientWidth - progressBtnWidth
@@ -46,18 +47,15 @@ const ProgressBar: React.FC<ProgressBarProps> = (props) => {
   }
 
   const progressTouchStart: TouchEventHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-    console.log(e)
     const startTouch: touchProps = {
       initiated: true,
       startX: e.touches[0].pageX ?? 0,
       left: progress.current.clientWidth,
     }
-    console.log(progress.current.clientWidth)
     setTouch (startTouch);
   }
 
   const progressTouchMove:TouchEventHandler = (e: React.TouchEvent<HTMLDivElement>) => {
-    console.log(e)
     if (!touch.initiated) return
     const deltaX = e.touches[0].pageX - touch.startX
     const barWidth = progressBar.current.clientWidth - progressBtnWidth

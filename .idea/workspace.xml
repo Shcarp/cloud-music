@@ -2,81 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="25445346-57a3-457f-8889-e8d7fe1de692" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/cloud-music.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/request.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/type/request.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/utils/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Home/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Home/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Rank/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Rank/rank.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Rank/store.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Rank/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/recommend.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/store/actionCreators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/store/constant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/store/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Recommend/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/singer.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/store/actionCreators.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/store/constant.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/store/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/application/Singers/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/demo.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/demo_index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/assets/iconfont/iconfont.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/baseUI/horizen-item/horizen.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/baseUI/horizen-item/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/baseUI/horizen-item/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loading-v2/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loading-v2/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loading/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Loading/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecommendList/04.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecommendList/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/RecommendList/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Scroll/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Scroll/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slider/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/Slider/style.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/hooks/useDebounce/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/routes/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/serviceWorker.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/store/reducer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/global.style.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/type/index.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yarn-error.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/react-app-env.d.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/react-app-env.d.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reportWebVitals.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +22,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../js 练习" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
@@ -113,6 +40,9 @@
       <updated>1632387311103</updated>
       <workItem from="1632387332729" duration="8107000" />
       <workItem from="1632464329228" duration="2360000" />
+      <workItem from="1633504243244" duration="311000" />
+      <workItem from="1633676193902" duration="104000" />
+      <workItem from="1633676377441" duration="119000" />
     </task>
     <servers />
   </component>
